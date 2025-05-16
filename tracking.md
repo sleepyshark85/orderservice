@@ -41,3 +41,11 @@ Requires a learning curve, though.
 #### Add contents to architecture documentation
 
 #### Will continue focusing on architecture documentation tomorrow. Let's hope we can finish a majority part of it tomorrow.
+
+### 16/05
+
+Around 3 hours.
+
+#### Trying to finish the architecture design so that we can focus on the implementation tomorrow
+Finished with important parts of the architecture documentation. Will improve it along with the implementation.
+Let's start with the implementation tomorrow.

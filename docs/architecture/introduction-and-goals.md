@@ -1,4 +1,4 @@
-# Introduction and Goals
+# 1. Introduction and Goals
 
 ## Requirements Overview
 The Order Checkout system enables Art Directors to search for previously created orders, initiate checkout processes, and push orders to the Production system. The primary workflow includes:
@@ -21,12 +21,10 @@ The Order Checkout system enables Art Directors to search for previously created
 | 4       | Responsiveness      | API responses should be timely, with appropriate feedback during async processes      |
 | 5       | Maintainability     | System should be easy to extend with new steps in the checkout process                |
 
-## Architecture Constraints
+## Stakeholders
 
-| Constraint          | Description                                                                                                 |
-|---------------------|-------------------------------------------------------------------------------------------------------------|
-| Technology stack    | C#/.NET Core for backend service                                                                            |
-| Service Integration | Must integrate with existing payment service provider, email service, invoice system, and production system |
-| Authentication      | OAuth 2.0 with client credentials flow                                                                      |
-| Deployment          | Containerized deployment                                                                                    |
-| Compliance          | Financial and PII data handling must comply with regional regulations. GDPR in Europe, PDPD in Vietnam      |
+|Role                               | Expectation                                                       |
+|-----------------------------------|-------------------------------------------------------------------|
+| Art Directors                     | Our end-users. We want to satisfy their needs                     |
+| Owners of the external systems    | We use their services, we need to make sure we use them correctly |
+| IT OPS                            | Operate and monitor our system                                    |
