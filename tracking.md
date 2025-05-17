@@ -49,3 +49,15 @@ Around 3 hours.
 #### Trying to finish the architecture design so that we can focus on the implementation tomorrow
 Finished with important parts of the architecture documentation. Will improve it along with the implementation.
 Let's start with the implementation tomorrow.
+
+### 17/05
+
+Around 2 hours
+
+#### Add  project skeleton with a few important endpoints
+- Use OpenAPI
+- API endpoint are on v1
+- Added component test cases for the 2 main functions: Search for order and checkout order
+
+
+Let's start adding more logic tomorrow.
