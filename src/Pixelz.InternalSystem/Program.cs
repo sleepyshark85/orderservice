@@ -5,7 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 builder.Services.AddOrderStore("esdb://eventstore:2113?tls=false");
-builder.Services.AddCheckoutFlow();
 
 var app = builder.Build();
 

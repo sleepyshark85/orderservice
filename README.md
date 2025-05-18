@@ -20,7 +20,7 @@ Our architecture documentation follows the [Arc42 template](https://arc42.org/ov
 11. **Risks and Technical Debt** - Known issues and future concerns
 12. **Glossary** - Terms and definitions
 
-Go to 
+Go to [docs/architecture.md](./docs/architecture.md) for more detailed information.
 
 ## Key Features
 
@@ -31,3 +31,18 @@ Go to
 - Invoice creation
 - Payment processing
 - Error handling and recovery
+
+
+## How to run
+Execute the following command at the root folder of the repository:
+
+
+```
+docker-compose up --build -d 
+```
+
+Applications url:
+
+- Internal System: http://localhost:8080/scalar
+- Checkout service: http://localhost:8082/scalar
+- EventStore: http://localhost:2113/

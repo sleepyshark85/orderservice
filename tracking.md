@@ -61,3 +61,22 @@ Around 2 hours
 
 
 Let's start adding more logic tomorrow.
+
+### 18/05
+
+Around 6 hours.
+
+#### Implement the requirement:
+- Added 2 API projects:
+    - Pixelz.InternalSystem: To manage orders
+    - Pixelz.OrderService: To implement checkout saga
+
+We use EventStoreDB for both order store and saga store for simplification
+
+All components can be run with [docker-compose.yml](./docker-compose.yml)
+
+The main flow for create order, get order and checkout saga has been finished. Only payment gateway has been included into the checkout flow, though. I will implement event listener for InternalSystem tomorrow to listen for checkout saga status changes to demostrate the post-checkout flow.
+
+Code need to be refactored.
+
+Important architecture decisions need to be documented.

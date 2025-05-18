@@ -1,16 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
+using Pixelz.OrderStore;
 
-namespace Pixelz.OrderService.Controllers;
+namespace Pixelz.InternalSystem.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
 public class OrdersController : ControllerBase
 {
     private readonly ILogger<OrdersController> _logger;
+    private readonly IEventStoreRepository _eventStoreRepository;
 
-    public OrdersController(ILogger<OrdersController> logger)
+    public OrdersController(ILogger<OrdersController> logger, IEventStoreRepository eventStoreRepository)
     {
         _logger = logger;
+        _eventStoreRepository = eventStoreRepository;
     }
 
     //For the simplification/demostration purpose, I define create order endpoint here. 
@@ -18,23 +21,33 @@ public class OrdersController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateOrder([FromBody] CreateOrderRequest request)
     {
-        throw new NotImplementedException();
+        var orderEvent = new OrderCreatedEvent()
+        {
+            OrderId = Guid.NewGuid(),
+            Name = request.Name,
+            ClientId = request.ClientId,
+            Items = request.Items.Select(e => new OrderItem()
+            {
+                Description = e.Description,
+                Quantity = e.Quantity,
+                UnitPrice = e.UnitPrice
+            }).ToList()
+        };
+
+        var eventId = await _eventStoreRepository.SaveAsync(orderEvent);
+
+        return Ok(eventId);
     }
 
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetOrder(Guid id)
     {
-        throw new NotImplementedException();
+        var order = await _eventStoreRepository.GetOrderAsync(id);
+        return Ok(order);
     }
 
     [HttpGet]
     public async Task<IActionResult> GetOrders([FromQuery] string? name)
-    {
-        throw new NotImplementedException();
-    }
-
-    [HttpPost("{id:guid}/checkout")]
-    public async Task<IActionResult> CheckoutOrder(Guid id, [FromBody] CheckoutOrderRequest request)
     {
         throw new NotImplementedException();
     }
@@ -54,10 +67,4 @@ public class OrderItemRequest
     public required string Description { get; set; }
     public required int Quantity { get; set; }
     public required decimal UnitPrice { get; set; }
-}
-
-public class CheckoutOrderRequest
-{
-    public required string CheckoutBy { get; set; }
-    public required string PaymentMethod { get; set; }
 }
